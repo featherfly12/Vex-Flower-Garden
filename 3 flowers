@@ -1,0 +1,53 @@
+dist = 0
+angle = 0
+
+def petal2():
+    global myVariable, petal, curve, dist, angle
+    drivetrain.drive_for(FORWARD, dist, MM)
+    drivetrain.turn_for(RIGHT, angle, DEGREES)
+    drivetrain.drive_for(FORWARD, dist, MM)
+    drivetrain.turn_for(RIGHT, angle, DEGREES)
+    drivetrain.drive_for(FORWARD, (dist / 2), MM)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD, (dist / 2), MM)
+    drivetrain.turn_for(RIGHT, angle, DEGREES)
+    drivetrain.drive_for(FORWARD, dist, MM)
+    drivetrain.turn_for(RIGHT, angle, DEGREES)
+    drivetrain.drive_for(FORWARD, dist, MM)
+    drivetrain.turn_for(RIGHT, (angle / 3), DEGREES)
+    drivetrain.drive_for(FORWARD, (dist / 2), MM)
+
+def when_started1():
+    global dist, angle
+    drivetrain.set_drive_velocity(999, PERCENT)
+    drivetrain.set_turn_velocity(999, PERCENT)
+    drivetrain.drive_for(FORWARD, 500, MM)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD, 500, MM)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    angle = 30
+    dist = 200
+    pen.move(DOWN)
+    pen.set_pen_color_rgb(234, 0, 202, 100)
+    for repeat_count in range(18):
+        petal2()
+    pen.set_pen_color_rgb(0, 255, 255, 100)
+    pen.move(UP)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD, 700, MM)
+    dist = 100
+    pen.set_pen_width(EXTRA_THIN)
+    pen.move(DOWN)
+    for repeat_count2 in range(18):
+        petal2()
+    pen.move(UP)
+    pen.set_pen_width(MEDIUM)
+    pen.set_pen_color_rgb(255, 255, 0, 100)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD, 800, MM)
+    dist = 250
+    pen.move(DOWN)
+    for repeat_count3 in range(18):
+        petal2()
+
+vr_thread(when_started1)
