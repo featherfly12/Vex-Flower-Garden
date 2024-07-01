@@ -1,0 +1,53 @@
+dist = 0
+angle = 0
+petal = 0
+myVariable = 0
+curve = 0
+def petal2():
+    global myVariable, petal, curve, dist, angle
+    drivetrain.drive_for(FORWARD, dist, MM)
+    drivetrain.turn_for(RIGHT, angle, DEGREES)
+    drivetrain.drive_for(FORWARD, dist, MM)
+    drivetrain.turn_for(RIGHT, angle, DEGREES)
+    drivetrain.drive_for(FORWARD, dist, MM)
+    drivetrain.turn_for(RIGHT, (angle * 2), DEGREES)
+    drivetrain.drive_for(FORWARD, dist, MM)
+    drivetrain.turn_for(RIGHT, angle, DEGREES)
+    drivetrain.drive_for(FORWARD, dist, MM)
+    drivetrain.turn_for(RIGHT, angle, DEGREES)
+    drivetrain.drive_for(FORWARD, dist, MM)
+def petal22():
+    global myVariable, petal, curve, dist, angle
+    drivetrain.drive_for(FORWARD, dist, MM)
+    drivetrain.turn_for(RIGHT, angle, DEGREES)
+    drivetrain.drive_for(FORWARD, dist, MM)
+    drivetrain.turn_for(RIGHT, angle, DEGREES)
+    drivetrain.drive_for(FORWARD, (dist / 2), MM)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD, (dist / 2), MM)
+    drivetrain.turn_for(RIGHT, angle, DEGREES)
+    drivetrain.drive_for(FORWARD, dist, MM)
+    drivetrain.turn_for(RIGHT, angle, DEGREES)
+    drivetrain.drive_for(FORWARD, dist, MM)
+    drivetrain.turn_for(RIGHT, (angle / 3), DEGREES)
+    drivetrain.drive_for(FORWARD, (dist / 2), MM)
+def when_started1():
+    global dist, angle, petal, myVariable, curve
+    pass
+def when_started2():
+    global dist, angle, petal, myVariable, curve
+    drivetrain.set_drive_velocity(999, PERCENT)
+    drivetrain.set_turn_velocity(999, PERCENT)
+    drivetrain.drive_for(FORWARD, 200, MM)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD, 200, MM)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    angle = 30
+    dist = 200
+    pen.move(DOWN)
+    pen.set_pen_color_rgb(234, 0, 202, 100)
+    for repeat_count in range(18):
+        petal22()
+
+vr_thread(when_started2)
+vr_thread(when_started1)
